@@ -1,0 +1,30 @@
+
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>Page Title</title>
+        <%= stylesheet_link_tag "1.css" %>
+    </head>
+    <body>
+        <%= form_with model: article do |form| %>
+            
+            <%= form.label :title %><br>
+            <%= form.text_field :title %>
+            <% article.errors.full_messages_for(:title).each do |message| %>
+            <div><%= message %></div>
+            <% end %>
+            
+
+        
+            <%= form.label :body %><br>
+            <%= form.text_area :body %><br>
+            <% article.errors.full_messages_for(:body).each do |message| %>
+            <div><%= message %></div>
+            <% end %>
+            
+  
+            
+            <%= form.submit %>
+            <% end %>
+    </body>
+</html>

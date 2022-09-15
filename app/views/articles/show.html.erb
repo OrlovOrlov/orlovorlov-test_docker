@@ -1,0 +1,47 @@
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>Page Title</title>
+        <%= stylesheet_link_tag "1.css" %>
+    </head>
+    <body>
+        <div>
+            <p><%= @article.title %><p>
+            <p><%= @article.body %></p>
+        </div>
+        
+            <p><%= link_to "Edit", edit_article_path(@article) %></p>
+            <p><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></p>
+        <h1>Add a comment:</h1> 
+            <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+            <p>
+                <%= form.label :commenter %><br>
+                <%= form.text_field :commenter %>
+            </p>
+            <p>
+                <%= form.label :body %><br>
+                <%= form.text_area :body %>
+            </p>
+            <p>
+                <%= form.submit %>
+            </p>
+            <% end %> 
+        <h2>Comments</h2>
+            <% @article.comments.each do |comment| %>
+            <div>
+                <p>
+                    <strong>Commenter:</strong>
+                    <%= comment.commenter %>
+                </p>
+                <p>   
+                    <strong>Comment:</strong>
+                    <%= comment.body %>
+                </p>
+            </div>
+        <% end %>
+
+
+    </body>
+</html>

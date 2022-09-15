@@ -1,0 +1,23 @@
+
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>Page Title</title>
+        <%= stylesheet_link_tag "1.css" %>
+    </head>
+    <body>
+        <%= link_to "New Article", new_article_path %>
+        <h1>Articles</h1>
+        
+            <% @articles.each do |article| %>
+                <div>    
+                    
+                        <%= link_to article.title, article %>
+                    
+                </div>
+            <% end %>
+        
+
+        
+    </body>
+</html>
